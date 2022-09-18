@@ -1,15 +1,19 @@
 import React from 'react';
-import { fetchData, createData } from '../../Pages/Weather';
+import { fetchData } from '../../Pages/Weather';
 import { useState, useEffect } from 'react';
 import WeatherTable from '../WeatherTable';
 import WEATHER_API from '../Constants';
+
+function createData(name, description) {
+  return { name, description };
+}
 
 function WeatherWarning({ language }) {
 
     const [data, setData] = useState("")
     
     useEffect(() => {
-        fetchData(`${WEATHER_API}?dataType=warningInfo&lang=${language}`,setData)
+        fetchData(`${WEATHER_API}?dataType=warningsum&lang=${language}`,setData)
         console.log(data)
     }, [])
     

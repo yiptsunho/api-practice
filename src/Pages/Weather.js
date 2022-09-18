@@ -4,14 +4,13 @@ import { useState } from 'react';
 import WeatherForecast from '../Components/Tabs/WeatherForecast';
 import WeatherWarning from '../Components/Tabs/WeatherWarning';
 import CurrentWeather from '../Components/Tabs/CurrentWeather';
-import TyphoonInformation from '../Components/Tabs/TyphoonInformation';
+import NineDayForecast from '../Components/Tabs/NineDayForecast';
 
 export async function fetchData(url, setState) {
   await fetch(url)
   .then(response => response.json())
   .then(actualData => {
     setState(actualData)
-    console.log(actualData)
   })
 }
 
@@ -39,7 +38,7 @@ function Weather() {
     } else if (newValue === 2) {
       setTabContent(<WeatherWarning language={language}/>)
     } else if (newValue === 3) {
-      setTabContent(<TyphoonInformation language={language}/>)
+      setTabContent(<NineDayForecast language={language}/>)
     }
   }
 
@@ -63,7 +62,7 @@ function Weather() {
           <Tab label="Weather Forecast" />
           <Tab label="Current Weather" />
           <Tab label="Weather Warning" />
-          <Tab label="Typhoon Information" />
+          <Tab label="9-Day Forecast" />
         </Tabs>
         {tabContent}
       </Box>
