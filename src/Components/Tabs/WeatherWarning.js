@@ -10,22 +10,22 @@ function createData(name, description) {
 
 function WeatherWarning({ language }) {
 
-    const [data, setData] = useState("")
-    
-    useEffect(() => {
-        fetchData(`${WEATHER_API}?dataType=warningsum&lang=${language}`,setData)
-        console.log(data)
-    }, [])
-    
-    const rows = [
-        //createData('Warning', data.details[0].contents),
-        //createData('Warning Code', data.details[0].warningStatementCode),
-        //createData('Update Time', data.details[0].updateTime),
-    ];
+  const [data, setData] = useState("")
+
+  useEffect(() => {
+    fetchData(`${WEATHER_API}?dataType=warningsum&lang=${language}`, setData)
+
+  }, [])
+
+  const rows = [
+    // createData('Warning', data.details[0].contents),
+    // createData('Warning Code', data.details[0].warningStatementCode),
+    // createData('Update Time', data.details[0].updateTime),
+  ];
 
   return (
     <div>
-      <WeatherTable rows={rows}/>
+      <WeatherTable rows={rows} />
     </div>
   )
 };

@@ -8,14 +8,10 @@ import NineDayForecast from '../Components/Tabs/NineDayForecast';
 
 export async function fetchData(url, setState) {
   await fetch(url)
-  .then(response => response.json())
-  .then(actualData => {
-    setState(actualData)
-  })
-}
-
-export function createData(name, description) {
-  return { name, description };
+    .then(response => response.json())
+    .then(actualData => {
+      setState(actualData)
+    })
 }
 
 function Weather() {
@@ -25,20 +21,20 @@ function Weather() {
   const [language, setLanguage] = useState("en")
 
   useEffect(() => {
-    setTabContent(<WeatherForecast language={language}/>)
+    setTabContent(<WeatherForecast language={language} />)
   }, [])
 
   const handleChangeTab = (event, newValue) => {
     setValue(newValue)
-    
+
     if (newValue === 0) {
-      setTabContent(<WeatherForecast language={language}/>)
+      setTabContent(<WeatherForecast language={language} />)
     } else if (newValue === 1) {
-      setTabContent(<CurrentWeather language={language}/>)
+      setTabContent(<CurrentWeather language={language} />)
     } else if (newValue === 2) {
-      setTabContent(<WeatherWarning language={language}/>)
+      setTabContent(<WeatherWarning language={language} />)
     } else if (newValue === 3) {
-      setTabContent(<NineDayForecast language={language}/>)
+      setTabContent(<NineDayForecast language={language} />)
     }
   }
 

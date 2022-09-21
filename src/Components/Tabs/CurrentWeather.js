@@ -10,26 +10,25 @@ function createData(name, description) {
 
 function CurrentWeather({ language }) {
 
-    const [data, setData] = useState("")
-    
-    useEffect(() => {
-        fetchData(`${WEATHER_API}?dataType=fnd&lang=${language}`,setData)
-        console.log(data)
-    }, [])
-    
-    console.log(data)
+  const [data, setData] = useState("")
 
-    const rows = [
-        //createData('Temperature', data.temperature.data),
-        //createData('Humidity', data.humidity.data),
-        //screateData('Rainfall', data.rainfall.data),
-        //createData('UV Index', data.forecastPeriod),
-        //createData('Warning Message', data.warningMessage[0]),
-    ];
+  useEffect(() => {
+    fetchData(`${WEATHER_API}?dataType=fnd&lang=${language}`, setData)
+  }, [])
+
+  console.log(data)
+
+  const rows = [
+    // createData('Temperature', data.temperature.data),
+    // createData('Humidity', data.humidity.data),
+    // createData('Rainfall', data.rainfall.data),
+    // createData('UV Index', data.forecastPeriod),
+    // createData('Warning Message', data.warningMessage[0]),
+  ];
 
   return (
     <div>
-      <WeatherTable rows={rows}/>
+      <WeatherTable rows={rows} />
     </div>
   )
 };
