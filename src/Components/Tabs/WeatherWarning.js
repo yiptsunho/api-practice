@@ -13,7 +13,7 @@ function WeatherWarning({ language }) {
   const [data, setData] = useState("")
 
   useEffect(() => {
-    fetchData(`${WEATHER_API}?dataType=warningsum&lang=${language}`, setData)
+    fetchData(`${WEATHER_API}?dataType=warnsum&lang=${language}`, setData)
 
   }, [])
 
