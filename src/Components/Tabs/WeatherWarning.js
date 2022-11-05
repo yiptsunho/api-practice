@@ -11,6 +11,7 @@ function createData(name, description) {
 function WeatherWarning({ language }) {
 
   const [data, setData] = useState("")
+  const headers = ['name', 'description']
 
   useEffect(() => {
     fetchData(`${WEATHER_API}?dataType=warnsum&lang=${language}`, setData)
@@ -25,7 +26,7 @@ function WeatherWarning({ language }) {
 
   return (
     <div>
-      <WeatherTable rows={rows} />
+      <WeatherTable headers={headers} rows={rows} />
     </div>
   )
 };
