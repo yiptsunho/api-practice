@@ -5,55 +5,60 @@ import WeatherTable from '../WeatherTable';
 import WEATHER_API from '../Constants';
 
 function createData(header, array) {
-  const [...unpack] = array
-  console.log(unpack)
-  return { header, unpack };
+  const [...unpackedData] = array
+  console.log(unpackedData)
+  return { header, unpackedData };
 }
 
 function NineDayForecast({ language }) {
 
-  const [data, setData] = useState("")
+  const [data, setData] = useState({})
+  var dayArr = []
+  var iconArr = []
+  var minTempArr = []
+  var maxTempArr = []
 
   useEffect(() => {
     fetchData(`${WEATHER_API}?dataType=fnd&lang=${language}`, setData)
   }, [])
 
-  console.log(data)
-  var dayArr = []
-  data.weatherForecast.forEach(day =>
-    dayArr.push(day.week)
-  )
+  useEffect(() => {
+    // initialise day array
+    if (Object.keys(data).length > 0) {
 
-  // var iconArr = []
-  // data.weatherForecast.forEach(day =>
-  //   iconArr.push(day.ForecastIcon)
-  // )
+      data.weatherForecast.forEach(day =>
+        dayArr.push(day.week)
+      )
 
-  // var minTempArr = []
-  // data.weatherForecast.forEach(day =>
-  //   minTempArr.push(day.forecastMintemp)
-  // )
+      data.weatherForecast.forEach(day =>
+        iconArr.push(day.ForecastIcon)
+      )
 
-  // var maxTempArr = []
-  // data.weatherForecast.forEach(day =>
-  //   maxTempArr.push(day.forecastMaxtemp)
-  // )
+      data.weatherForecast.forEach(day =>
+        minTempArr.push(day.forecastMintemp)
+      )
 
-  // console.log(dayArr)
-  // console.log(iconArr)
-  // console.log(minTempArr)
-  // console.log(maxTempArr)
+      data.weatherForecast.forEach(day =>
+        maxTempArr.push(day.forecastMaxtemp)
+      )
+    }
+  }, [data])
 
-  // const rows = [
-  //   createData('Day', dayArr),
-  //   createData('TC Info', iconArr),
-  //   createData('Fire Danger Warning', minTempArr),
-  //   createData('Forecast Period', maxTempArr),
-  // ];
+  console.log(dayArr)
+  console.log(iconArr)
+  console.log(minTempArr)
+  console.log(maxTempArr)
+
+  const rows = [
+    createData('Day', dayArr),
+    createData('TC Info', iconArr),
+    createData('Fire Danger Warning', minTempArr),
+    createData('Forecast Period', maxTempArr),
+  ];
 
   return (
     <div>
-      {/* <WeatherTable rows={rows} /> */}
+      <WeatherTable rows={rows} />
     </div>
   )
 };
