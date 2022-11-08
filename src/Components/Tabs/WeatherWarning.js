@@ -2,7 +2,7 @@ import React from 'react';
 import { fetchData } from '../../Pages/Weather';
 import { useState, useEffect } from 'react';
 import WeatherTable from '../WeatherTable';
-import WEATHER_API from '../Constants';
+import * as constants from '../Constants';
 
 function createData(name, description) {
   return { name, description };
@@ -14,7 +14,7 @@ function WeatherWarning({ language }) {
   const headers = ['name', 'description']
 
   useEffect(() => {
-    fetchData(`${WEATHER_API}?dataType=warnsum&lang=${language}`, setData)
+    fetchData(`${constants.WEATHER_API}?dataType=warnsum&lang=${language}`, setData)
 
   }, [])
 

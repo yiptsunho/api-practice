@@ -2,7 +2,7 @@ import React from 'react';
 import { fetchData } from '../../Pages/Weather';
 import { useState, useEffect, useRef } from 'react';
 import WeatherTable from '../WeatherTable';
-import WEATHER_API from '../Constants';
+import * as constants from '../Constants';
 import _ from 'lodash';
 
 function createData(name, array) {
@@ -19,7 +19,7 @@ function NineDayForecast({ language }) {
   // const headers = ['name', 'first', 'second', 'third', 'forth', 'fifth', 'sixth', 'seventh', 'eighth', 'nineth']
 
   useEffect(() => {
-    fetchData(`${WEATHER_API}?dataType=fnd&lang=${language}`, setData)
+    fetchData(`${constants.WEATHER_API}?dataType=fnd&lang=${language}`, setData)
   }, [])
 
   useEffect(() => {

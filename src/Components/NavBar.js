@@ -98,6 +98,11 @@ function NavBar() {
                   <Typography textAlign="center">Weather</Typography>
                 </MenuItem>
               </Link>
+              <Link to="/starwar">
+                <MenuItem key='Star War' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Star War</Typography>
+                </MenuItem>
+              </Link>
               <Link to="/contact">
                 <MenuItem key='Contact' onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Contact</Typography>
@@ -141,6 +146,15 @@ function NavBar() {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 Weather
+              </Button>
+            </Link>
+            <Link to="/starWar">
+              <Button
+                key='StarWar'
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Star War
               </Button>
             </Link>
             <Link to="/contact">
