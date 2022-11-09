@@ -12,18 +12,27 @@ function StarWar() {
         fetchData(`${constants.STAR_WAR_API}people/`, setStarWar)
     }, [])
 
+    useEffect(() => {
+        if (starWar && Object.keys(starWar).length > 0) {
+            setResults(starWar.results)
+        }
+    }, [starWar])
+
     return (
         <>
             <div className="App-header dark">
-                <div className="container">
+                <h1 className="container">
                     Star War
-                </div>
+                </h1>
             </div>
-            <div className="container">
+            <div className="container" align="center">
                 {
-                    starWar && Object.keys(starWar).length > 0 &&
+                    results && results.length > 0 &&
                     results.map(result => {
-                        <li>{result.name}</li>
+                        // console.log(result.name)
+                        return (
+                            <li>{result.name}</li>
+                        )
                     })
                 }
             </div>
@@ -31,4 +40,4 @@ function StarWar() {
     )
 }
 
-export default StarWar
+export default StarWar;
