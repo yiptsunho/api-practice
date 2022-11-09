@@ -148,7 +148,7 @@ function NavBar() {
                 Weather
               </Button>
             </Link>
-            <Link to="/starWar">
+            <Link to="/starwar">
               <Button
                 key='StarWar'
                 onClick={handleCloseNavMenu}
