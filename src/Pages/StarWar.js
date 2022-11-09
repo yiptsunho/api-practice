@@ -1,22 +1,39 @@
 import React from 'react';
 import * as constants from '../Components/Constants';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { fetchData } from './Weather';
+import Button from '@mui/material/Button';
 
 function StarWar() {
 
     const [starWar, setStarWar] = useState({})
     const [results, setResults] = useState(starWar?.results ?? [])
+    const nextPage = useRef("")
+    const previousPage = useRef("")
 
     useEffect(() => {
+
         fetchData(`${constants.STAR_WAR_API}people/`, setStarWar)
+
     }, [])
 
     useEffect(() => {
+
         if (starWar && Object.keys(starWar).length > 0) {
+            nextPage.current = starWar.next ?? ""
+            previousPage.current = starWar.previous ?? ""
             setResults(starWar.results)
         }
+
     }, [starWar])
+
+    const handleNext = () => {
+        fetchData(nextPage.current, setStarWar)
+    }
+
+    const handleBack = () => {
+        fetchData(previousPage.current, setStarWar)
+    }
 
     return (
         <>
@@ -29,12 +46,19 @@ function StarWar() {
                 {
                     results && results.length > 0 &&
                     results.map(result => {
-                        // console.log(result.name)
                         return (
-                            <li>{result.name}</li>
+                            <li>{result.url.charAt(result.url.length - 2)}. {result.name}</li>
                         )
                     })
                 }
+            </div>
+            <div className="row mx-4">
+                <div className="container col" align="left">
+                    <Button variant="contained" onClick={() => handleBack()}>Back</Button>
+                </div>
+                <div className="container col" align="right">
+                    <Button variant="contained" onClick={() => handleNext()}>Next</Button>
+                </div>
             </div>
         </>
     )
