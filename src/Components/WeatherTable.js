@@ -16,39 +16,42 @@ function WeatherTable({ headers, rows, isNineDay }) {
             {headers.map(header =>
               <TableCell align="center">{header}</TableCell>
             )}
-          </TableRow>
+            ``          </TableRow>
         </TableHead>
         <TableBody>
-          {isNineDay ?
-            rows.map(row => {
-              <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                {headers.map((header, headerIndex) => {
-                  if (headerIndex !== 0) {
-                    <>
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="left">{row[header]}</TableCell>
-                    </>
-                  }
-                })
-                }
-              </TableRow>
-            })
-            :
-            rows.map(row => {
-              <TableRow
-                key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="left">{row.description}</TableCell>
-              </TableRow>
+          {
+            // isNineDay ?
+            //   rows.map(row => {
+            //     <TableRow
+            //       key={row.name}
+            //       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            //     >
+            //       {headers.map((header, headerIndex) => {
+            //         if (headerIndex !== 0) {
+            //           <>
+            //             <TableCell component="th" scope="row">
+            //               {row.name}
+            //             </TableCell>
+            //             <TableCell align="left">{row[header]}</TableCell>
+            //           </>
+            //         }
+            //       })
+            //       }
+            //     </TableRow>
+            //   })
+            //   :
+            rows.map((row) => {
+              return (
+                <TableRow
+                  key={row.name}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="left">{row.description}</TableCell>
+                </TableRow>
+              )
             })}
         </TableBody>
       </Table>

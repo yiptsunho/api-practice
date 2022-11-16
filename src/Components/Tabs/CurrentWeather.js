@@ -29,7 +29,11 @@ function CurrentWeather({ language }) {
 
   return (
     <div>
-      <WeatherTable headers={headers} rows={rows} />
+      {rows.length > 0 &&
+        <WeatherTable
+          headers={headers}
+          rows={rows} />
+      }
     </div>
   )
 };
