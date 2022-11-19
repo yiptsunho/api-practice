@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Tabs, Tab } from '@mui/material';
-import { useState } from 'react';
 import WeatherForecast from '../Components/Tabs/WeatherForecast';
 import WeatherWarning from '../Components/Tabs/WeatherWarning';
 import CurrentWeather from '../Components/Tabs/CurrentWeather';
@@ -18,23 +17,23 @@ function Weather() {
 
   const [value, setValue] = useState(0);
   const [tabContent, setTabContent] = useState("")
-  const [language, setLanguage] = useState("en")
+  const language = useRef("en")
 
   useEffect(() => {
-    setTabContent(<WeatherForecast language={language} />)
+    setTabContent(<WeatherForecast language={language.current} />)
   }, [])
 
   const handleChangeTab = (event, newValue) => {
     setValue(newValue)
 
     if (newValue === 0) {
-      setTabContent(<WeatherForecast language={language} />)
+      setTabContent(<WeatherForecast language={language.current} />)
     } else if (newValue === 1) {
-      setTabContent(<CurrentWeather language={language} />)
+      setTabContent(<CurrentWeather language={language.current} />)
     } else if (newValue === 2) {
-      setTabContent(<WeatherWarning language={language} />)
+      setTabContent(<WeatherWarning language={language.current} />)
     } else if (newValue === 3) {
-      setTabContent(<NineDayForecast language={language} />)
+      setTabContent(<NineDayForecast language={language.current} />)
     }
   }
 
