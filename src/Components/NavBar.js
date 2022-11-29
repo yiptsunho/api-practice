@@ -103,6 +103,11 @@ function NavBar() {
                   <Typography textAlign="center">Star War</Typography>
                 </MenuItem>
               </Link>
+              <Link to="/chatapp">
+                <MenuItem key='ChatApp' onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Chat App</Typography>
+                </MenuItem>
+              </Link>
               <Link to="/contact">
                 <MenuItem key='Contact' onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">Contact</Typography>
@@ -155,6 +160,15 @@ function NavBar() {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 Star War
+              </Button>
+            </Link>
+            <Link to="/chatapp">
+              <Button
+                key='ChatApp'
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                Chat App
               </Button>
             </Link>
             <Link to="/contact">

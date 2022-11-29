@@ -6,6 +6,7 @@ import NavBar from './Components/NavBar';
 import Contact from './Pages/Contact';
 import Footer from './Components/Footer';
 import StarWar from './Pages/StarWar';
+import ChatApp from './Pages/ChatApp';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/weather" element={<Weather />} />
         <Route exact path="/starwar" element={<StarWar />} />
+        <Route exact path="/chatapp" element={<ChatApp />} />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
